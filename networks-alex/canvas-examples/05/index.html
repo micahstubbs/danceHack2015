@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1920" height="1080"></canvas>
+    <script>
+    // adapted from
+    // http://stackoverflow.com/questions/4779674/frame-by-frame-animation-in-html5-with-canvas
+
+      var imgNumber = 10001;
+      var lastImgNumber = 10031;
+
+      var canvas = document.getElementById('myCanvas')
+      var ctx = canvas.getContext('2d');
+      var img = new Image;
+      img.onload = function(){
+        ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height );
+        ctx.drawImage( img, 0, 0 );
+      };
+      var timer = setInterval( function(){
+        if (imgNumber>lastImgNumber){
+          clearInterval( timer );
+        }else{
+          img.src = "../../data/20151114_170343_707/data3DToGrCmplx002PTG.20151114_170343_707."+( imgNumber++ )+".png";
+        }
+      }, 1000*2 ); //Draw at 1 frames every 2 seconds
+    </script>
+  </body>
+</html>      
